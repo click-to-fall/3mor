@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد يا عمري ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Great+Vibes&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            /* Sets background.jpg with a dark overlay blend for high text contrast and sets it to scale perfectly */
+            background: linear-gradient(rgba(36, 4, 9, 0.65), rgba(36, 4, 9, 0.65)), url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #ffebee;
+            padding: 10px;
+        }
+
+        .container {
+            background: rgba(36, 4, 9, 0.95);
+            padding: 25px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(216, 27, 96, 0.2);
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            transition: all 0.5s ease;
+            border: 2px solid #800c1e;
+        }
+
+        h2, h3 {
+            color: #ffcdd2;
+            margin-bottom: 20px;
+        }
+
+        .english-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #ffb74d;
+            margin-bottom: 10px;
+            direction: ltr;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #ff8a80;
+            margin-bottom: 25px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 15px 0;
+            border: 2px solid #800c1e;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-radius: 25px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="password"]:focus {
+            border-color: #ff1744;
+            box-shadow: 0 0 10px rgba(255, 23, 68, 0.4);
+        }
+
+        button {
+            background: linear-gradient(45deg, #800c1e, #b71c1c);
+            color: white;
+            border: 1px solid #ff4d6d;
+            padding: 12px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #b71c1c, #ff1744);
+            box-shadow: 0 7px 20px rgba(255, 23, 68, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .question-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #ffffe0;
+            line-height: 1.6;
+            text-align: right;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-label {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid #4a0510;
+            padding: 12px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.2s;
+            font-size: 14px;
+            color: #ffebee;
+            text-align: right;
+            line-height: 1.5;
+        }
+
+        .option-label:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #ff4d6d;
+        }
+
+        .option-label input {
+            accent-color: #ff1744;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .error-message {
+            color: #ffffe0;
+            background: #b71c1c;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+            font-weight: bold;
+            border: 1px solid #ff4d6d;
+            line-height: 1.6;
+        }
+
+        /* Celebration Responsive Memories List */
+        .memories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #4a0510;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            text-align: right;
+            transition: 0.3s;
+        }
+
+        .memory-card:hover {
+            border-color: #ff4d6d;
+            transform: translateY(-2px);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid #800c1e;
+        }
+
+        .memory-content {
+            padding: 15px;
+        }
+
+        .memory-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffb74d;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .memory-desc {
+            font-size: 13.5px;
+            color: #f5f5f5;
+            line-height: 1.6;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .letter-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid #ff1744;
+            border-right: 4px solid #ff1744;
+            padding: 20px 15px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: right;
+            line-height: 1.8;
+            font-size: 14px;
+            color: #ffebee;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        .love-footer {
+            font-size: 18px;
+            color: #ff4d6d;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 23, 68, 0.6);
+            font-size: 20px;
+            animation: floatUp 4s linear infinite;
+            bottom: -20px;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgSong" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- 1. Password Step -->
+    <div class="container" id="passwordStep">
+        <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.3rem; letter-spacing: 1px; color: #ffb74d;">A Special Day</h2>
+        <p style="margin-bottom: 20px; color: #ffcdd2; font-size: 14px;">الرجاء إدخال رمز الدخول لرؤية المفاجأة الكبرى ❤️</p>
+        <input type="password" id="pwdInput" placeholder="ادخل الرقم السري هنا...">
+        <br>
+        <button onclick="checkPassword()">دخول</button>
+        <div id="pwdError" class="error-message hidden">الرمز السري غير صحيح! حاول مرة أخرى 🧐</div>
+    </div>
+
+    <!-- 2. Quiz Step -->
+    <div class="container hidden" id="quizStep">
+        <h3 id="quizProgress" style="text-align: center; color: #ff8a80; font-size: 13px; margin-bottom: 15px;">السؤال 1 من 3</h3>
+        
+        <!-- Question 1 -->
+        <div class="quiz-content" id="q1Container">
+            <div class="question-title">لو جيت في يوم وقولتلك مش قادرة أطبخ.. هتعمل إيه؟</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q1" value="wrong1"> هتقولي أنا جعان قومي اعمليلي أي حاجه</label>
+                <label class="option-label"><input type="radio" name="q1" value="correct"> هتقولي ارتاحي يا حبيبتي وأنا هجيبلنا أكل جاهز </label>
+                <label class="option-label"><input type="radio" name="q1" value="wrong2"> هتروح تاكل عند مامتك وتسيبني</label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-content hidden" id="q2Container">
+            <div class="question-title">لو خدت عربيتك في يوم وخبطتها?</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q2" value="correct"> فدايا ألف عربية </label>
+                <label class="option-label"><input type="radio" name="q2" value="wrong1"> هتقولي إن عادي كده كده الستات مابتعرفش تسوق</label>
+                <label class="option-label"><input type="radio" name="q2" value="wrong2"> هتزعل وتقولي مش هديهالك تاني</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-content hidden" id="q3Container">
+            <div class="question-title">بتحب إيه أكتر؟</div>
+            <div class="options-container">
+                <label class="option-label"><input type="radio" name="q3" value="wrong1"> صحابك</label>
+                <label class="option-label"><input type="radio" name="q3" value="wrong2"> كريستيانو</label>
+                <label class="option-label"><input type="radio" name="q3" value="correct"> أنا  </label>
+            </div>
+        </div>
+
+        <button id="nextBtn" onclick="nextQuestion()">التالي</button>
+        <div id="quizError" class="error-message hidden"></div>
+    </div>
+
+    <!-- 3. Celebration Step -->
+    <div class="container hidden" id="celebrationStep">
+        <div class="celebration-view">
+            <div class="english-title">Happy 19 Birthday 3mory ❤️</div>
+            <p class="subtitle">✨ Let the celebration begin ✨</p>
+            
+            <div style="margin: 15px 0;">
+                <span style="font-size: 3.5rem;">🎂🎉🎈</span>
+            </div>
+
+            <h3 style="color: #ffcdd2; font-size: 20px; margin-top: 25px; border-bottom: 1px solid #4a0510; padding-bottom: 10px;">Our Beautiful Moments ✨</h3>
+            
+            <!-- Pictures List Flow for Perfect Mobile Views -->
+            <div class="memories-list">
+                
+                <!-- Image 1 -->
+                <div class="memory-card">
+                    <img src="image1.jpeg" alt="Memory 1" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">Our first picture together❤️</div>
+                        <div class="memory-desc">No matter how much time passes, I’ll never forget this picture or that day. You got me a teddy bear, and it was the cutest one ever. I couldn’t stop hugging it. It was the first time I was that happy over a teddy bear, just because it was from you. That day will always be my favorite day❤️</div>
+                    </div>
+                </div>
+
+                <!-- Image 2 -->
+                <div class="memory-card">
+                    <img src="image2.jpeg" alt="Memory 2" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">The first time you held my hand…🤝❤️</div>
+                        <div class="memory-desc">The first time you held my hand… you have no idea how I felt. I was so happy and felt so safe. My whole body was shaking. You were the first person to ever hold my hand, and the first person who made me feel so many beautiful emotions.That day we went to the movies, then sat at a café, and took the cutest pictures together. No matter what happens, I’ll never forget that day or how it made me feel. Nothing could ever replace those memories❤️</div>
+                    </div>
+                </div>
+
+                <!-- Image 3 -->
+                <div class="memory-card">
+                    <img src="image3.jpeg" alt="Memory 3" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">At Spazio ✨🤵‍♂️</div>
+                        <div class="memory-desc">We were at Spazio, and I was so happy just being with you. We kept looking for someone to take our picture, then we went upstairs. 😂 You looked so handsome. You’ll always be the most handsome guy in my eyes❤️</div>
+                    </div>
+                </div>
+
+                <!-- Image 4 -->
+                <div class="memory-card">
+                    <img src="image4.jpeg" alt="Memory 4" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">Through thick and thin ❤️🩹</div>
+                        <div class="memory-desc">That day wasn’t the best because we kept arguing, but every day I spend with you makes me happy. Even if we have our little fights, all that matters is that I’m with you, my love. ❤️</div>
+                    </div>
+                </div>
+
+                <!-- Image 5 -->
+                <div class="memory-card">
+                    <img src="image5.jpeg" alt="Memory 5" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">Our random adventure 🚗😂</div>
+                        <div class="memory-desc">That day was so random. We were supposed to go to Tanta to take pictures, but the car broke down and everything went wrong. The whole day was a mess. 😂 But we still decided to go anyway, and we didn’t even end up taking any pictures. Then we got food from Wahmy and just sat there eating. I was still so happy, though. Definitely one of the best random days ever. 😂❤️</div>
+                    </div>
+                </div>
+
+                <!-- Image 6 -->
+                <div class="memory-card">
+                    <img src="image6.jpeg" alt="Memory 6" onerror="this.style.display='none';">
+                    <div class="memory-content">
+                        <div class="memory-title">Amusement park & Shawarma 🎡🌯</div>
+                        <div class="memory-desc">That day was so beautiful. I was so happy. We all hung out at a café, then went to the amusement park. Every time I remember that day, I jokingly blame you for what happened there—may God forgive you😂❤️ After that, we stayed in the car together, and you got me shawarma. I’ll never forget a single day I spent with you❤️</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Letter from the Heart -->
+            <div class="letter-section">
+                <p>كل سنه وانت طيب يا حبيب قلبي وكل سنه واحنا سوا ونفضل مع بعض العمر كله ربنا يخليك ليا يا حبيبي وتفضل جمبي ومشوفش فيك حاجة وحشه واشوفك اشطر وانجح واحد في الدنيا دي ربنا ميحرمنيش منك بحب وجودك معايا وبحب يومي معاك وبحب كل وقت بقضيه معاك ببقي مطمنه وانا معاك احلي حاجة انك موجود معايا بحبك وبحب حنيتك عليا واهتمامك بيا في كل وقت عمري ما هنسي ولا وقت بينا ولا ذكري بينا حتي لو عدي اي انا مليش غيرك ي عمور والله يارب تفضل جمبي العمر كله عمري ما ازهق منك والله بموت فيك يا حبيبي🏡❤️❤️❤️❤️❤️❤️❤️❤️</p>
+                <hr style="margin: 15px 0; border: none; border-top: 1px dashed #ff4d6d;">
+                <div class="love-footer">❤️ Your girl </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let score = 0;
+
+        function checkPassword() {
+            const pwd = document.getElementById('pwdInput').value;
+            if (pwd === '121') {
+                document.getElementById('passwordStep').classList.add('hidden');
+                document.getElementById('quizStep').classList.remove('hidden');
+            } else {
+                const err = document.getElementById('pwdError');
+                err.classList.remove('hidden');
+            }
+        }
+
+        function nextQuestion() {
+            const errorDiv = document.getElementById('quizError');
+            errorDiv.classList.add('hidden');
+
+            if (currentStep === 1) {
+                const q1 = document.querySelector('input[name="q1"]:checked');
+                if (!q1) { errorDiv.textContent = "برجاء اختيار إجابة أولاً!"; errorDiv.classList.remove('hidden'); return; }
+                if (q1.value === 'correct') score++;
+                
+                document.getElementById('q1Container').classList.add('hidden');
+                document.getElementById('q2Container').classList.remove('hidden');
+                document.getElementById('quizProgress').textContent = "السؤال 2 من 3";
+                currentStep = 2;
+            } else if (currentStep === 2) {
+                const q2 = document.querySelector('input[name="q2"]:checked');
+                if (!q2) { errorDiv.textContent = "برجاء اختيار إجابة أولاً!"; errorDiv.classList.remove('hidden'); return; }
+                if (q2.value === 'correct') score++;
+                
+                document.getElementById('q2Container').classList.add('hidden');
+                document.getElementById('q3Container').classList.remove('hidden');
+                document.getElementById('quizProgress').textContent = "السؤال 3 من 3";
+                document.getElementById('nextBtn').textContent = "تأكيد الإجابات";
+                currentStep = 3;
+            } else if (currentStep === 3) {
+                const q3 = document.querySelector('input[name="q3"]:checked');
+                if (!q3) { errorDiv.textContent = "برجاء اختيار إجابة أولاً!"; errorDiv.classList.remove('hidden'); return; }
+                if (q3.value === 'correct') score++;
+                
+                evaluateScore();
+            }
+        }
+
+        function evaluateScore() {
+            const errorDiv = document.getElementById('quizError');
+            errorDiv.classList.remove('hidden');
+            document.getElementById('nextBtn').classList.add('hidden');
+
+            if (score === 0) {
+                errorDiv.innerHTML = "طب مفيش عييد ميلاد 😡<br><button onclick='resetQuiz()' style='padding:5px 15px; font-size:14px; margin-top:10px;'>حاول تاني</button>";
+            } else if (score === 1 || score === 2) {
+                errorDiv.innerHTML = "أنا زعلانه منك حاول تاني 🥺<br><button onclick='resetQuiz()' style='padding:5px 15px; font-size:14px; margin-top:10px;'>حاول تاني</button>";
+            } else if (score === 3) {
+                document.getElementById('quizStep').classList.add('hidden');
+                document.getElementById('celebrationStep').classList.remove('hidden');
+                
+                const audio = document.getElementById('bgSong');
+                audio.play().catch(e => console.log("Audio play gesture required"));
+                
+                startHearts();
+            }
+        }
+
+        function resetQuiz() {
+            score = 0;
+            currentStep = 1;
+            document.getElementById('quizError').classList.add('hidden');
+            document.getElementById('q1Container').classList.remove('hidden');
+            document.getElementById('q2Container').classList.add('hidden');
+            document.getElementById('q3Container').classList.add('hidden');
+            document.getElementById('quizProgress').textContent = "السؤال 1 من 3";
+            document.getElementById('nextBtn').textContent = "التالي";
+            document.getElementById('nextBtn').classList.remove('hidden');
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
+        }
+
+        function startHearts() {
+            const container = document.getElementById('heartsContainer');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
