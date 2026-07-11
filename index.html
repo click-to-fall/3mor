@@ -231,7 +231,50 @@
             margin-top: 15px;
             font-weight: bold;
         }
+/* Video Section */
+.video-section {
+    margin: 40px 0 20px;
+    text-align: center;
+}
 
+.video-frame {
+    background: linear-gradient(145deg, rgba(128,12,30,.9), rgba(36,4,9,.95));
+    border: 2px solid #ff4d6d;
+    border-radius: 22px;
+    padding: 12px;
+    box-shadow:
+        0 0 30px rgba(255,77,109,.15),
+        0 12px 35px rgba(0,0,0,.45);
+    overflow: hidden;
+}
+
+.video-frame video {
+    width: 100%;
+    display: block;
+    border-radius: 15px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 13px 32px;
+    text-decoration: none;
+    background: linear-gradient(45deg,#800c1e,#b71c1c);
+    color: #fff;
+    border: 1px solid #ff4d6d;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: .35s;
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+
+.download-btn:hover{
+    transform: translateY(-3px);
+    background: linear-gradient(45deg,#b71c1c,#ff1744);
+    box-shadow: 0 10px 28px rgba(255,23,68,.35);
+}
         .hearts-container {
             position: fixed;
             top: 0;
@@ -391,6 +434,22 @@
                 <div class="love-footer">❤️ Your girl </div>
             </div>
 
+            <div class="video-section">
+
+    <div class="video-frame">
+        <video controls preload="metadata">
+            <source src="vid.MOV" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <a href="vid.MOV" download class="download-btn">
+        ⬇️ Download Our Video
+    </a>
+
+</div>
+
+
         </div>
     </div>
 
@@ -477,7 +536,7 @@
         function startHearts() {
             const container = document.getElementById('heartsContainer');
             setInterval(() => {
-                const heart = document.createElement('div');
+                const heart = doAcumaAent.createElement('div');
                 heart.classList.add('heart');
                 heart.innerHTML = '❤️';
                 heart.style.left = Math.random() * 100 + 'vw';
