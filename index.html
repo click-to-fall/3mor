@@ -442,7 +442,9 @@
             Your browser does not support the video tag.
         </video>
     </div>
-
+<button class="download-btn" onclick="toggleSong()" id="songBtn">
+    🔇 Stop Song
+</button>
     <a href="vid.mp4" download class="download-btn">
         ⬇️ Download Our Video
     </a>
@@ -546,6 +548,20 @@
                 setTimeout(() => heart.remove(), 5000);
             }, 300);
         }
+
+
+        function toggleSong() {
+    const audio = document.getElementById('bgSong');
+    const btn = document.getElementById('songBtn');
+
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🔇 Stop Song";
+    } else {
+        audio.pause();
+        btn.innerHTML = "🎵 Play Song";
+    }
+}
     </script>
 </body>
 </html>
